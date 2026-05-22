@@ -2,6 +2,7 @@
 #ifdef TOOLS_ENABLED
 #include <godot_cpp/classes/editor_plugin.hpp>
 #include "mrp_debugger_plugin.h"
+#include "mrp_inspector_plugin.h"
 
 namespace godot {
 
@@ -9,6 +10,7 @@ class MrpEditorPlugin : public EditorPlugin {
     GDCLASS(MrpEditorPlugin, EditorPlugin)
 
     Ref<MrpDebuggerPlugin> _debugger_plugin;
+    Ref<MrpInspectorPlugin> _inspector_plugin;
 
 public:
     virtual String _get_plugin_name() const override;

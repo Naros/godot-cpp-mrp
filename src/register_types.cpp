@@ -6,6 +6,7 @@
 #ifdef TOOLS_ENABLED
 #include "editor/mrp_editor_plugin.h"
 #include "editor/mrp_debugger_plugin.h"
+#include "editor/mrp_inspector_plugin.h"
 #include <godot_cpp/classes/editor_plugin_registration.hpp>
 #endif
 
@@ -18,6 +19,7 @@ void initialize_mrp_module(ModuleInitializationLevel p_level) {
 #ifdef TOOLS_ENABLED
     if (p_level == MODULE_INITIALIZATION_LEVEL_EDITOR) {
         ClassDB::register_class<MrpDebuggerPlugin>();
+        ClassDB::register_class<MrpInspectorPlugin>();
         ClassDB::register_class<MrpEditorPlugin>();
         EditorPlugins::add_by_type<MrpEditorPlugin>();
     }
