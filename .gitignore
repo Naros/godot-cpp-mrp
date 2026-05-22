@@ -1,0 +1,10 @@
+/build/
+.sconsign.dblite
+*.import
+*.os
+*.a
+*.so
+*.dll
+*.dylib
+/extern/godot-cpp/bin/
+/extern/godot-cpp/gen/
