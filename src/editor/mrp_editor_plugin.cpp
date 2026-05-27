@@ -1,5 +1,6 @@
 #include "mrp_editor_plugin.h"
 #ifdef TOOLS_ENABLED
+#include <godot_cpp/classes/engine.hpp>
 
 namespace godot {
 
@@ -8,19 +9,15 @@ String MrpEditorPlugin::_get_plugin_name() const {
 }
 
 void MrpEditorPlugin::_enter_tree() {
-    _debugger_plugin.instantiate();
-    add_debugger_plugin(_debugger_plugin);
-
-    _inspector_plugin.instantiate();
-    add_inspector_plugin(_inspector_plugin);
+    for (const String& singleton_class : Engine::get_singleton()->get_singleton_list()) {
+        if (!named_globals.has(singleton_class)) {
+            named_globals[singleton_class] = Engine::get_singleton()->get_singleton(singleton_class);
+        }
+    }
 }
 
 void MrpEditorPlugin::_exit_tree() {
-    //remove_debugger_plugin(_debugger_plugin);
-    _debugger_plugin.unref();
 
-    //remove_inspector_plugin(_inspector_plugin);
-    _inspector_plugin.unref();
 }
 
 void MrpEditorPlugin::_bind_methods() {}

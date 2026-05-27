@@ -9,8 +9,7 @@ namespace godot {
 class MrpEditorPlugin : public EditorPlugin {
     GDCLASS(MrpEditorPlugin, EditorPlugin)
 
-    Ref<MrpDebuggerPlugin> _debugger_plugin;
-    Ref<MrpInspectorPlugin> _inspector_plugin;
+    HashMap<StringName, Variant> named_globals;
 
 public:
     virtual String _get_plugin_name() const override;
